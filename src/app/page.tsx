@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import {
   Box,
   Center,
@@ -7,7 +7,6 @@ import {
   Heading,
   HStack,
   IconButton,
-  Spacer,
   Text,
   VStack,
 } from "@yamada-ui/react";
@@ -40,10 +39,10 @@ export default function Home() {
           bgPosition="left -40%"
           bgRepeat={"no-repeat"}
         />
-        <VStack>
-          <Box p={4}>
+        <VStack p={4} h="100%">
+          <Box>
             <Heading
-              fontSize="8em"
+              fontSize="5vw"
               fontWeight="medium"
               textColor="white"
               className={MonoFont.className}
@@ -52,7 +51,7 @@ export default function Home() {
               Hack
             </Heading>
             <Heading
-              fontSize="8em"
+              fontSize="5vw"
               fontWeight="medium"
               textColor="white"
               className={MonoFont.className}
@@ -80,8 +79,7 @@ export default function Home() {
             </Heading>
           </Box>
           <Heading textColor="white">本郷をハックしよう。</Heading>
-          <Spacer />
-          <Center ref={contentRef}>
+          <Center ref={contentRef} w="50%" flexGrow={1} h="full">
             <IconButton
               icon={<MdArrowDownward />}
               size="lg"
@@ -167,53 +165,63 @@ export default function Home() {
             です。
           </Text>
           <Marquee pauseOnHover>
-            <HStack>
-              {[0, 1, 2].map((i) => (
-                <React.Fragment key={i}>
-                  <Gallery
-                    bgImage="bot.jpeg"
-                    avatarSrc="bot.jpeg"
-                    title="ロボット班"
-                    description="ロボットを作ります"
-                    heading={
-                      <>
-                        ロボットを制御して
-                        <wbr />
-                        世界征服しよう
-                      </>
-                    }
-                    subHeading={<>ロボット班の活動</>}
-                  />
-                  <Gallery
-                    bgImage="pc.jpg"
-                    avatarSrc="pc.jpg"
-                    title="パソコン班"
-                    description="ソフトウェア関連を総合して扱います"
-                    heading={
-                      <>
-                        プログラミングで
-                        <wbr />
-                        自分の世界を創造しよう
-                      </>
-                    }
-                    subHeading={<>PC班の活動</>}
-                  />
-                  <Gallery
-                    bgImage="craft.jpeg"
-                    avatarSrc="craft.jpeg"
-                    title="電子工作班"
-                    description="ラズパイやArduinoを使ってメカを作ります"
-                    heading={
-                      <>
-                        男なら
-                        <wbr />
-                        ゼロから作れ！
-                      </>
-                    }
-                    subHeading={<>電子工作班の活動</>}
-                  />
-                </React.Fragment>
-              ))}
+            <HStack ml={5}>
+              <Gallery
+                bgImage="bot.jpeg"
+                avatarSrc="bot.jpeg"
+                title="ロボット班"
+                description="ロボットを作ります"
+                heading={
+                  <>
+                    ロボットを制御して
+                    <wbr />
+                    世界征服しよう
+                  </>
+                }
+                subHeading={<>ロボット班の活動</>}
+              />
+              <Gallery
+                bgImage="pc.jpg"
+                avatarSrc="pc.jpg"
+                title="パソコン班"
+                description="吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。"
+                heading={
+                  <>
+                    プログラミングで
+                    <wbr />
+                    自分の世界を創造しよう
+                  </>
+                }
+                subHeading={<>PC班の活動</>}
+              />
+              <Gallery
+                bgImage="craft.jpeg"
+                avatarSrc="craft.jpeg"
+                title="電子工作班"
+                description="ラズパイやArduinoを使ってメカを作ります"
+                heading={
+                  <>
+                    男なら
+                    <wbr />
+                    ゼロから作れ！
+                  </>
+                }
+                subHeading={<>電子工作班の活動</>}
+              />
+              <Gallery
+                bgImage="retro.jpeg"
+                avatarSrc="retro.jpeg"
+                title="技術遺産研究班"
+                description="PC-98やFM-TOWNSなどのレトロPCを研究します"
+                heading={
+                  <>
+                    古きを温め
+                    <wbr />
+                    新しきを知る
+                  </>
+                }
+                subHeading={<>レトロPC班の活動</>}
+              />
             </HStack>
           </Marquee>
         </VStack>

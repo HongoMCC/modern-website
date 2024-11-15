@@ -1,3 +1,5 @@
+"use client";
+
 import { Icon } from "@yamada-ui/react";
 import React from "react";
 

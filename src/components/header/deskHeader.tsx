@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Divider,
@@ -13,7 +15,7 @@ import { useRouter } from "next/navigation";
 export default function DeskHeader() {
   const router = useRouter();
   return (
-    <Box pos="sticky" h="72px" as="header" top={0} zIndex={1}>
+    <Box pos="sticky" h="72px" as="header" top={0} zIndex={99}>
       <Box bgColor="#121212" p={4}>
         <HStack justifyContent="space-around">
           <Image src="logo-w.png" alt="logo" h="40px" />

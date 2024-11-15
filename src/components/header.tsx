@@ -1,3 +1,5 @@
+"use client";
+
 import useWindowSize from "@/hooks/useWindowSize";
 import DeskHeader from "./header/deskHeader";
 import MobileHeader from "./header/mobileHeader";

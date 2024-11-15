@@ -1,3 +1,5 @@
+"use client";
+
 import { Box } from "@yamada-ui/react";
 
 export default function MobileHeader() {

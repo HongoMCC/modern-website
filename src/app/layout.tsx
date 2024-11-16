@@ -20,8 +20,14 @@ const config: ThemeConfig = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        <ColorModeScript
+          type="cookie"
+          nonce="testing"
+          initialColorMode={config.initialColorMode}
+        />
+      </head>
       <body className={`${NotoFont.variable}`}>
-        <ColorModeScript type="cookie" nonce="testing" />
         <UIProvider theme={customTheme} config={config}>
           {children}
         </UIProvider>

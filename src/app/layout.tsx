@@ -1,10 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 import { UIProvider, ColorModeScript, ThemeConfig } from "@yamada-ui/react";
 import { Noto_Sans_JP } from "next/font/google";
 import customTheme from "../theme";
+import Loading from "./loading";
 
 const NotoFont = Noto_Sans_JP({
   weight: ["100", "200", "300", "400", "500", "700", "900"],
@@ -28,9 +29,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className={`${NotoFont.variable}`}>
-        <UIProvider theme={customTheme} config={config}>
-          {children}
-        </UIProvider>
+        <Suspense fallback={<Loading />}>
+          <UIProvider theme={customTheme} config={config}>
+            {children}
+          </UIProvider>
+        </Suspense>
       </body>
     </html>
   );

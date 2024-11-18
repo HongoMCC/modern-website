@@ -9,20 +9,20 @@ import {
   HStack,
   IconButton,
   Image,
-  Spacer,
+  ScaleFade,
   Text,
+  useDisclosure,
   VStack,
 } from "@yamada-ui/react";
 import TypeIt from "typeit-react";
 import { JetBrains_Mono } from "next/font/google";
 import Header from "@/components/header";
-import { MdArrowDownward, MdPlace, MdTimer } from "react-icons/md";
+import { MdArrowDownward } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import Gallery from "@/components/gallery";
 import Marquee from "react-fast-marquee";
-import GithubIcon from "@/components/githubIcon";
-import QiitaIcon from "@/components/qiitaIcon";
-import XIcon from "@/components/xIcon";
+import Footer from "@/components/footer";
+
 const MonoFont = JetBrains_Mono({
   weight: "variable",
   subsets: ["latin"],
@@ -34,6 +34,22 @@ export default function Home() {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const scaleFadeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        onOpen();
+      } else {
+        onClose();
+      }
+    });
+    observer.observe(scaleFadeRef.current as Element);
+    return () => {
+      observer.disconnect();
+    };
+  }, [scaleFadeRef]);
   return (
     <Box bgColor="#121212">
       <Fade isOpen={isLoaded} duration={3}>
@@ -103,8 +119,8 @@ export default function Home() {
                 icon={<MdArrowDownward />}
                 size="lg"
                 color="white"
-                colorScheme="neutral"
                 variant={"ghost"}
+                _hover={{ bgColor: "gray.700" }}
                 onClick={() =>
                   contentRef.current?.scrollIntoView({
                     behavior: "smooth",
@@ -136,6 +152,7 @@ export default function Home() {
                 マイコン部について
               </Heading>
             </HStack>
+
             <Text textColor="gray.50">
               本郷学園マイコン部は、東京都巣鴨に位置する中高一貫制の男子校、本郷中学校・高等学校の文化部です。
               <br />
@@ -166,20 +183,22 @@ export default function Home() {
               </Heading>
             </HStack>
             <Text textColor="gray.50">マイコン部の活動内容は、</Text>
-            <Center w="100%">
-              <Center
-                bgImage="focus.svg"
-                bgSize="100%"
-                bgPosition="center"
-                bgRepeat="no-repeat"
-                h="200px"
-                w="70%"
-              >
-                <Heading textColor="gray.50">
-                  「およそ技術に関連していれば何をしてもよい」
-                </Heading>
+            <ScaleFade isOpen={isOpen} ref={scaleFadeRef}>
+              <Center w="100%">
+                <Center
+                  bgImage="focus.svg"
+                  bgSize="100%"
+                  bgPosition="center"
+                  bgRepeat="no-repeat"
+                  h="200px"
+                  w="70%"
+                >
+                  <Heading textColor="gray.50">
+                    「およそ技術に関連していれば何をしてもよい」
+                  </Heading>
+                </Center>
               </Center>
-            </Center>
+            </ScaleFade>
             <Text textColor="white" textAlign="right">
               です。
             </Text>
@@ -275,92 +294,7 @@ export default function Home() {
             </HStack>
           </VStack>
         </Box>
-        <Box bgColor="#000000" h="50vh" w="100vw" p={4} id="footer">
-          <Divider />
-          <VStack p={4} h="100%" w="100%">
-            <HStack w="100%" h="35%">
-              <Image src="logo-w.png" alt="logo" h="80%" p={4} />
-              <Divider h="100%" orientation="vertical" />
-              <VStack gap={0} maxH="100%">
-                <Text textColor="white">本郷学園</Text>
-                <Heading textColor="white">マイコン部</Heading>
-                <Text textColor="white" fontFamily={MonoFont.style.fontFamily}>
-                  Hongo MicroComputer Club
-                </Text>
-              </VStack>
-              <Spacer />
-              <VStack
-                gap={0.5}
-                bgColor="#252525"
-                borderRadius="md"
-                p={4}
-                m={2}
-                h="100%"
-                fontSize="2xs"
-              >
-                <HStack gap={0.5} justifySelf="flex-start">
-                  <MdPlace color="white" />
-                  <Heading
-                    textColor="white"
-                    size="xs"
-                    fontFamily={MonoFont.style.fontFamily}
-                  >
-                    Place
-                  </Heading>
-                </HStack>
-                <Text textColor="gray.100">〒170-0003</Text>
-                <Text textColor="gray.100">東京都豊島区駒込4-11-1</Text>
-                <Text textColor="gray.100">本郷中学校・高等学校</Text>
-                <Text textColor="gray.100">
-                  5号館3階 第1・第2コンピュータ室
-                </Text>
-              </VStack>
-              <VStack
-                gap={0.5}
-                bgColor="#252525"
-                borderRadius="md"
-                p={4}
-                m={2}
-                h="100%"
-                fontSize="2xs"
-              >
-                <HStack gap={0.5} justifySelf="flex-start">
-                  <MdTimer color="white" />
-                  <Heading
-                    textColor="white"
-                    size="xs"
-                    fontFamily={MonoFont.style.fontFamily}
-                  >
-                    Time
-                  </Heading>
-                </HStack>
-                <HStack gap={0}>
-                  <VStack gap={0}>
-                    <Text textColor="gray.100">活動日</Text>
-                    <Text textColor="gray.100">活動時間</Text>
-                  </VStack>
-                  <VStack gap={0}>
-                    <Text textColor="gray.100">：毎週月曜日・金曜日</Text>
-                    <Text textColor="gray.100">：15:30-18:00</Text>
-                  </VStack>
-                </HStack>
-              </VStack>
-            </HStack>
-            <HStack w="100%" ml={4} h="10%">
-              <GithubIcon color={"white"} />
-              <QiitaIcon />
-              <XIcon color={"white"} />
-            </HStack>
-            <Spacer />
-            <Text
-              textColor="gray"
-              textAlign="center"
-              fontFamily={MonoFont.style.fontFamily}
-            >
-              (C) 2024 Hongo M.C.C. All Rights Reserved.
-            </Text>
-          </VStack>
-        </Box>
+        <Footer />
       </Fade>
     </Box>
   );

@@ -183,7 +183,7 @@ export default function Home() {
               </Heading>
             </HStack>
             <Text textColor="gray.50">マイコン部の活動内容は、</Text>
-            <ScaleFade isOpen={isOpen} ref={scaleFadeRef}>
+            <ScaleFade isOpen={isOpen} ref={scaleFadeRef} scale={1.8}>
               <Center w="100%">
                 <Center
                   bgImage="focus.svg"
@@ -291,6 +291,47 @@ export default function Home() {
               <Heading textColor="white" size="sm">
                 部長あいさつ
               </Heading>
+            </HStack>
+            <HStack bgColor="#252525" borderRadius="md" p={4} m={2}>
+              <Image
+                src="bucho.png"
+                alt="部長"
+                borderRadius="md"
+                h="500px"
+                aspectRatio={3 / 4}
+                objectFit={"cover"}
+                objectPosition="left 0"
+              />
+              <VStack>
+                <Heading textColor="white">マイコン部長</Heading>
+                <Text textColor="gray.50">
+                  マイコン部と一口に言っても、既にご覧いただいている通り、その活動は多岐にわたります。
+                  <wbr />
+                  その活動の最小単位は「1人」。つまり、個人がそれぞれ興味の向く方を向いて好きなように活動します。
+                  <wbr />
+                  ただし、誰に言われずとも何かを「創る」ことだけは暗黙の了解となっています。
+                  <wbr />
+                  この部活が「PC部」ではなく「マイコン部」である理由も、ただプログラミングだけではないということがおわかり頂けるでしょう。
+                  <wbr />
+                  特に、PC-98などの古いコンピュータを収集し、技術を継承することが目的のレトロPC班や、レゴを使ってプログラムできるロボットを作成し、また代々継承されているロボットをプログラムして動かすレゴ・ロボット班などです。
+                  <wbr />
+                  これらは、他所のPC系の部活では人数や関連性などの問題で実施されていないものがほとんどです。
+                  <wbr />
+                  ただし、それらは全てが自己責任となっています。その分、よっぽどのことがない限り顧問又は他の部員に活動が阻害されることはありません。
+                  <wbr />
+                  更に、プログラミングに関しても同じように部員たちは「完全独学」で習得しています。
+                  <wbr />
+                  私はC#のみを修めていますが、C++,Python,Scratch,Ruby,HSPなどが扱える部員もいます。
+                  <wbr />
+                  また、本郷学園の理念の一つに「自学自習」があります。
+                  <wbr />
+                  しかし、マイコン部はそのような胡散臭い文句を基に活動しているわけではありません。
+                  <wbr />
+                  部員たちの活動は全てが純粋な興味だけが動機です。
+                  <wbr />
+                  「プログラミングをやれば受験・就職で使えるだろう」「PCについて知っていたらカッコよくてモテるだろうな」等の損得勘定が動機となってはいけません。そのような不純な思いでは自分が満足のいくものは創作できません。
+                </Text>
+              </VStack>
             </HStack>
           </VStack>
         </Box>

@@ -5379,6 +5379,7 @@ __metadata:
     eslint-config-next: "npm:15.0.3"
     next: "npm:15.0.3"
     react: "npm:19.0.0-rc-66855b96-20241106"
+    react-children-utilities: "npm:^2.10.0"
     react-dom: "npm:19.0.0-rc-66855b96-20241106"
     react-fast-marquee: "npm:^1.6.5"
     react-icons: "npm:^5.3.0"
@@ -5776,6 +5777,15 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 10c0/900a93d3cdae3acd7d16f642c29a642aea32c2026446151f0778c62ac089d4b8e6c986811076e1ae180a694cedf077d453a11b58ff0a865629a4f82ab558e102
+  languageName: node
+  linkType: hard
+
+"react-children-utilities@npm:^2.10.0":
+  version: 2.10.0
+  resolution: "react-children-utilities@npm:2.10.0"
+  peerDependencies:
+    react: ">=15"
+  checksum: 10c0/6a7e2ec7a43eaf4d4b55543b0f2a8c9ecb94071e6fad303d5a3b026fc23422b01955f82157dd5d2f3e8d0d70a3af2f6aa781d71a520a09047649a4f129234bb9
   languageName: node
   linkType: hard
 

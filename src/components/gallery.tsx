@@ -1,4 +1,5 @@
 "use client";
+import useWindowSize from "@/hooks/useWindowSize";
 import {
   Avatar,
   Box,
@@ -6,7 +7,6 @@ import {
   Heading,
   HStack,
   Modal,
-  ModalFooter,
   ScrollArea,
   Spacer,
   Text,
@@ -27,15 +27,17 @@ interface GalleryProps {
 
 export default function Gallery(props: GalleryProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [width] = useWindowSize();
   return (
     <Box
-      w="400px"
-      h="500px"
+      w={{ base: "400px", md: "300px" }}
+      h={{ base: "500px", md: "375px" }}
       borderRadius="md"
       bgImage={props.bgImage}
       bgPosition="center"
       bgSize="cover"
       overflow={"hidden"}
+      onClick={onOpen}
     >
       <VStack alignItems="flex-end" gap={0} h="100%">
         <VStack
@@ -68,17 +70,19 @@ export default function Gallery(props: GalleryProps) {
               </Text>
             </VStack>
             <Spacer />
-            <Button
-              borderLeftRadius="full"
-              borderRightRadius="full"
-              fontWeight="normal"
-              fontSize="xs"
-              colorScheme="primary"
-              w="150px"
-              onClick={onOpen}
-            >
-              もっと見る
-            </Button>
+            {width > 768 && (
+              <Button
+                borderLeftRadius="full"
+                borderRightRadius="full"
+                fontWeight="normal"
+                fontSize="xs"
+                colorScheme="primary"
+                w="150px"
+                onClick={onOpen}
+              >
+                もっと見る
+              </Button>
+            )}
           </HStack>
         </Box>
       </VStack>
@@ -121,20 +125,10 @@ export default function Gallery(props: GalleryProps) {
         <ScrollArea p={4} h="300px">
           {props.description}
         </ScrollArea>
-        <ModalFooter>
-          <Button
-            colorScheme="primary"
-            onClick={onClose}
-            borderLeftRadius="full"
-            borderRightRadius="full"
-            fontWeight="normal"
-            fontSize="xs"
-            w="100px"
-            mt={4}
-          >
-            とじる
-          </Button>
-        </ModalFooter>
+
+        <Button colorScheme="primary" onClick={onClose} borderRadius="none">
+          とじる
+        </Button>
       </Modal>
     </Box>
   );

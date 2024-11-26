@@ -3,30 +3,26 @@
 import {
   Box,
   Center,
-  Divider,
   Fade,
   Heading,
   HStack,
-  IconButton,
-  Image,
+  Icon,
   ScaleFade,
   Text,
   useDisclosure,
   VStack,
 } from "@yamada-ui/react";
-import TypeIt from "typeit-react";
-import { JetBrains_Mono } from "next/font/google";
+
 import Header from "@/components/header";
-import { MdArrowDownward } from "react-icons/md";
+import { MdTouchApp } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import Gallery from "@/components/gallery";
 import Marquee from "react-fast-marquee";
 import Footer from "@/components/footer";
+import ArticleTitle from "@/components/articleTitle";
+import Top from "@/components/top";
+import Greet from "@/components/greet";
 
-const MonoFont = JetBrains_Mono({
-  weight: "variable",
-  subsets: ["latin"],
-});
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const words = ["Hongo.", "yourself.", "everything!"];
@@ -50,110 +46,16 @@ export default function Home() {
       observer.disconnect();
     };
   }, [scaleFadeRef]);
+
   return (
     <Box bgColor="#121212">
       <Fade isOpen={isLoaded} duration={3}>
         <Header />
-        <Box bgColor="#121212" height="calc(100vh - 72px)" w="100vw">
-          <Box
-            clipPath="polygon(70% 0, 100% 0, 100% 100%, 30% 100%)"
-            h="calc(100vh - 72px)"
-            w="70%"
-            position="absolute"
-            right="0"
-          >
-            <Marquee speed={10}>
-              <HStack gap={0} w={"100%"} h="calc(100vh - 72px)">
-                <Image
-                  src="monitorman-bw.jpg"
-                  alt="background"
-                  objectFit="cover"
-                  h={"100%"}
-                />
-              </HStack>
-            </Marquee>
-          </Box>
-          <VStack p={4} h="100%">
-            <Box>
-              <Heading
-                fontSize="5vw"
-                fontWeight="medium"
-                textColor="white"
-                className={MonoFont.className}
-                fontFamily={MonoFont.style.fontFamily}
-              >
-                Hack
-              </Heading>
-              <Heading
-                fontSize="5vw"
-                fontWeight="medium"
-                textColor="white"
-                className={MonoFont.className}
-                fontFamily={MonoFont.style.fontFamily}
-              >
-                <TypeIt
-                  getBeforeInit={(instance) => {
-                    instance
-                      .type(words[0])
-                      .pause(500)
-                      .delete()
-                      .type(words[1])
-                      .pause(500)
-                      .delete()
-                      .type(words[2])
-                      .pause(500)
-                      .go();
-                    return instance;
-                  }}
-                  options={{
-                    loop: true,
-                    speed: 100,
-                  }}
-                />
-              </Heading>
-            </Box>
-            <Heading textColor="white">本郷をハックしよう。</Heading>
-
-            <Center ref={contentRef} w="50%" flexGrow={1} h="full">
-              <IconButton
-                icon={<MdArrowDownward />}
-                size="lg"
-                color="white"
-                variant={"ghost"}
-                _hover={{ bgColor: "gray.700" }}
-                onClick={() =>
-                  contentRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-              />
-            </Center>
-          </VStack>
-        </Box>
+        <Top words={words} contentRef={contentRef} />
         <Box bgColor="#121212" w="100vw" p={4}>
           <VStack>
-            <HStack w="100%">
-              <Heading
-                textColor="subtle"
-                fontFamily={MonoFont.style.fontFamily}
-                size="2xl"
-              >
-                01
-              </Heading>
-              <Divider h="60px" orientation="vertical" />
-              <Heading
-                textColor="white"
-                fontFamily={MonoFont.style.fontFamily}
-                w="20%"
-              >
-                About
-              </Heading>
-              <Heading textColor="white" size="sm">
-                マイコン部について
-              </Heading>
-            </HStack>
-
-            <Text textColor="gray.50">
+            <ArticleTitle no={1} en="About" ja="マイコン部について" />
+            <Text textColor="gray.50" fontSize={{ base: "md", md: "sm" }}>
               本郷学園マイコン部は、東京都巣鴨に位置する中高一貫制の男子校、本郷中学校・高等学校の文化部です。
               <br />
               さまざまな興味関心を持つ部員たちが集い、日夜跳梁跋扈しています。
@@ -162,27 +64,10 @@ export default function Home() {
         </Box>
         <Box bgColor="#121212" w="100vw" p={4}>
           <VStack w="100%">
-            <HStack w="100%">
-              <Heading
-                textColor="subtle"
-                fontFamily={MonoFont.style.fontFamily}
-                size="2xl"
-              >
-                02
-              </Heading>
-              <Divider h="60px" orientation="vertical" />
-              <Heading
-                textColor="white"
-                fontFamily={MonoFont.style.fontFamily}
-                w="20%"
-              >
-                Activities
-              </Heading>
-              <Heading textColor="white" size="sm">
-                マイコン部の活動
-              </Heading>
-            </HStack>
-            <Text textColor="gray.50">マイコン部の活動内容は、</Text>
+            <ArticleTitle no={2} en="Activities" ja="マイコン部の活動" />
+            <Text textColor="gray.50" fontSize={{ base: "md", md: "sm" }}>
+              マイコン部の活動内容は、
+            </Text>
             <ScaleFade isOpen={isOpen} ref={scaleFadeRef} scale={1.8}>
               <Center w="100%">
                 <Center
@@ -193,16 +78,31 @@ export default function Home() {
                   h="200px"
                   w="70%"
                 >
-                  <Heading textColor="gray.50">
-                    「およそ技術に関連していれば何をしてもよい」
+                  <Heading
+                    textColor="gray.50"
+                    size={{ base: "lg", md: "md" }}
+                    wordBreak="keep-all"
+                    textAlign="center"
+                  >
+                    「およそ技術に関連 <wbr />
+                    していれば <wbr />
+                    何をしてもよい」
                   </Heading>
                 </Center>
               </Center>
             </ScaleFade>
-            <Text textColor="white" textAlign="right">
+            <Text
+              textColor="white"
+              textAlign="right"
+              fontSize={{ base: "md", md: "sm" }}
+            >
               です。
             </Text>
-            <Text textColor="gray.50" wordBreak="keep-all">
+            <Text
+              textColor="gray.50"
+              wordBreak="keep-all"
+              fontSize={{ base: "md", md: "sm" }}
+            >
               部員たちは、自分たちの興味関心に基づいて「班」を結成し、同じ興味を持つ部員たちと共に活動しています。
               <wbr />
               「班」は部員の宣言によって1名以上の班員で設立でき、2つ以上の班に所属することも可能です。
@@ -267,72 +167,54 @@ export default function Home() {
                 />
               </HStack>
             </Marquee>
+            <HStack w="100%" justifyContent="center">
+              <Icon as={MdTouchApp} color="gray" />
+              <Text
+                textColor="gray"
+                fontSize={{ base: "md", md: "sm" }}
+                textAlign="center"
+              >
+                タッチ・クリックして詳細をみる
+              </Text>
+            </HStack>
           </VStack>
         </Box>
 
         <Box bgColor="#121212" w="100vw" p={4}>
           <VStack w="100%">
-            <HStack w="100%">
-              <Heading
-                textColor="subtle"
-                fontFamily={MonoFont.style.fontFamily}
-                size="2xl"
+            <ArticleTitle no={3} en="Executives" ja="部長あいさつ" />
+            <Greet imageSrc="bucho.png" title="マイコン部長">
+              <Text
+                textColor={{ base: "gray.50", md: "black" }}
+                fontSize={{ base: "md", md: "sm" }}
               >
-                03
-              </Heading>
-              <Divider h="60px" orientation="vertical" />
-              <Heading
-                textColor="white"
-                fontFamily={MonoFont.style.fontFamily}
-                w="20%"
-              >
-                Executives
-              </Heading>
-              <Heading textColor="white" size="sm">
-                部長あいさつ
-              </Heading>
-            </HStack>
-            <HStack bgColor="#252525" borderRadius="md" p={4} m={2}>
-              <Image
-                src="bucho.png"
-                alt="部長"
-                borderRadius="md"
-                h="500px"
-                aspectRatio={3 / 4}
-                objectFit={"cover"}
-                objectPosition="left 0"
-              />
-              <VStack>
-                <Heading textColor="white">マイコン部長</Heading>
-                <Text textColor="gray.50">
-                  マイコン部と一口に言っても、既にご覧いただいている通り、その活動は多岐にわたります。
-                  <wbr />
-                  その活動の最小単位は「1人」。つまり、個人がそれぞれ興味の向く方を向いて好きなように活動します。
-                  <wbr />
-                  ただし、誰に言われずとも何かを「創る」ことだけは暗黙の了解となっています。
-                  <wbr />
-                  この部活が「PC部」ではなく「マイコン部」である理由も、ただプログラミングだけではないということがおわかり頂けるでしょう。
-                  <wbr />
-                  特に、PC-98などの古いコンピュータを収集し、技術を継承することが目的のレトロPC班や、レゴを使ってプログラムできるロボットを作成し、また代々継承されているロボットをプログラムして動かすレゴ・ロボット班などです。
-                  <wbr />
-                  これらは、他所のPC系の部活では人数や関連性などの問題で実施されていないものがほとんどです。
-                  <wbr />
-                  ただし、それらは全てが自己責任となっています。その分、よっぽどのことがない限り顧問又は他の部員に活動が阻害されることはありません。
-                  <wbr />
-                  更に、プログラミングに関しても同じように部員たちは「完全独学」で習得しています。
-                  <wbr />
-                  私はC#のみを修めていますが、C++,Python,Scratch,Ruby,HSPなどが扱える部員もいます。
-                  <wbr />
-                  また、本郷学園の理念の一つに「自学自習」があります。
-                  <wbr />
-                  しかし、マイコン部はそのような胡散臭い文句を基に活動しているわけではありません。
-                  <wbr />
-                  部員たちの活動は全てが純粋な興味だけが動機です。
-                  <wbr />
-                  「プログラミングをやれば受験・就職で使えるだろう」「PCについて知っていたらカッコよくてモテるだろうな」等の損得勘定が動機となってはいけません。そのような不純な思いでは自分が満足のいくものは創作できません。
-                </Text>
-              </VStack>
-            </HStack>
+                マイコン部と一口に言っても、既にご覧いただいている通り、その活動は多岐にわたります。
+                <br />
+                その活動の最小単位は「1人」。つまり、個人がそれぞれ興味の向く方を向いて好きなように活動します。
+                <br />
+                ただし、誰に言われずとも何かを「創る」ことだけは暗黙の了解となっています。
+                <br />
+                この部活が「PC部」ではなく「マイコン部」である理由も、ただプログラミングだけではないということがおわかり頂けるでしょう。
+                <br />
+                特に、PC-98などの古いコンピュータを収集し、技術を継承することが目的のレトロPC班や、レゴを使ってプログラムできるロボットを作成し、また代々継承されているロボットをプログラムして動かすレゴ・ロボット班などです。
+                <br />
+                これらは、他所のPC系の部活では人数や関連性などの問題で実施されていないものがほとんどです。
+                <br />
+                ただし、それらは全てが自己責任となっています。その分、よっぽどのことがない限り顧問又は他の部員に活動が阻害されることはありません。
+                <br />
+                更に、プログラミングに関しても同じように部員たちは「完全独学」で習得しています。
+                <br />
+                私はC#のみを修めていますが、C,C++,Python,Scratch,Ruby,JavaScript,Java,Rust,Swiftなどが扱える部員もいます。
+                <br />
+                また、本郷学園の理念の一つに「自学自習」があります。
+                <br />
+                しかし、マイコン部はそのような胡散臭い文句を基に活動しているわけではありません。
+                <br />
+                部員たちの活動は全てが純粋な興味だけが動機です。
+                <br />
+                「プログラミングをやれば受験・就職で使えるだろう」「PCについて知っていたらカッコよくてモテるだろうな」等の損得勘定が動機となってはいけません。そのような不純な思いでは自分が満足のいくものは創作できません。
+              </Text>
+            </Greet>
           </VStack>
         </Box>
         <Footer />

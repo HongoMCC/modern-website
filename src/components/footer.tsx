@@ -6,5 +6,5 @@ import MobileFooter from "./footer/mobileFooter";
 
 export default function Footer() {
   const [width] = useWindowSize();
-  return width >= 390 ? <DeskFooter /> : <MobileFooter />;
+  return width >= 768 ? <DeskFooter /> : <MobileFooter />;
 }

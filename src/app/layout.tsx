@@ -23,11 +23,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ja">
       <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
         <meta charSet="UTF-8" />
-        <link
-          rel="icon"
-          type="image/svg+xml"
-          href="public/monitorIcon-bw.png"
+        <meta http-equiv="content-language" content="ja" />
+        <link rel="icon" type="image/png" href="public/monitorIcon-bw.png" />
+        <meta
+          name="keywords"
+          content="本郷学園, マイコン部, 本郷中学校, 本郷高等学校"
         />
+        <meta name="theme-color" content="#121212" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <ColorModeScript
           type="cookie"
@@ -52,6 +54,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <meta property="og:site_name" content="Hongo M.C.C. Website" />
         <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@HongoMCC" />
+        <meta name="twitter:creator" content="@HongoMCC" />
       </head>
       <body className={`${NotoFont.variable}`}>
         <Suspense fallback={<Loading />}>

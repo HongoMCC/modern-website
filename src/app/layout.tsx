@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
         <meta charSet="UTF-8" />
         <meta http-equiv="content-language" content="ja" />
-        <link rel="icon" type="image/png" href="public/monitorIcon-bw.png" />
+        <link rel="icon" type="image/png" href="/monitorman-m.png" />
         <meta
           name="keywords"
           content="本郷学園, マイコン部, 本郷中学校, 本郷高等学校"

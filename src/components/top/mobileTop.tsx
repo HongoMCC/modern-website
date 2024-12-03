@@ -23,7 +23,13 @@ const MonoFont = JetBrains_Mono({
 export default function MobileTop(props: TopProps) {
   return (
     <Box bgColor="#121212" height="calc(100svh - 72px)" w="100vw">
-      <Box h="calc(100svh - 72px)" position="absolute" top="72px" maxW="100%">
+      <Box
+        h="calc(100svh - 72px)"
+        position="absolute"
+        top="72px"
+        maxW="100%"
+        overflow="hidden"
+      >
         <Marquee speed={10}>
           <HStack gap={0} w="100vw" h="calc(100svh - 72px)">
             <Image
@@ -42,7 +48,7 @@ export default function MobileTop(props: TopProps) {
         bottom="100px"
         //カッター型にする
         clipPath="polygon(0 0, 0 100%, 60% 100%, 80% 0)"
-        zIndex={999}
+        zIndex={99}
         bg="#121212"
       >
         <Box>
@@ -65,13 +71,13 @@ export default function MobileTop(props: TopProps) {
             <TypeIt
               getBeforeInit={(instance) => {
                 instance
-                  .type(props.words[0])
+                  .type(props.wordsEn[0])
                   .pause(500)
                   .delete()
-                  .type(props.words[1])
+                  .type(props.wordsEn[1])
                   .pause(500)
                   .delete()
-                  .type(props.words[2])
+                  .type(props.wordsEn[2])
                   .pause(500)
                   .go();
                 return instance;

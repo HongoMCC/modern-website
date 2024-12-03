@@ -3,7 +3,8 @@ import DeskTop from "./top/deskTop";
 import MobileTop from "./top/mobileTop";
 
 export type TopProps = {
-  words: string[];
+  wordsEn: string[];
+  wordsJa: string[];
   contentRef: React.RefObject<HTMLDivElement>;
 };
 

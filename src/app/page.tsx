@@ -25,7 +25,8 @@ import Greet from "@/components/greet";
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
-  const words = ["Hongo.", "yourself.", "everything!"];
+  const wordsEn = ["Hongo.", "yourself.", "everything!"];
+  const wordsJa = ["本郷", "自分自身", "すべて"];
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     setIsLoaded(true);
@@ -51,7 +52,7 @@ export default function Home() {
     <Box bgColor="#121212">
       <Fade isOpen={isLoaded} duration={3}>
         <Header />
-        <Top words={words} contentRef={contentRef} />
+        <Top wordsEn={wordsEn} wordsJa={wordsJa} contentRef={contentRef} />
         <Box bgColor="#121212" w="100vw" p={4}>
           <VStack>
             <ArticleTitle no={1} en="About" ja="マイコン部について" />

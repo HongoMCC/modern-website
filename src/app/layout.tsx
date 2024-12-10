@@ -23,8 +23,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ja">
       <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
         <meta charSet="UTF-8" />
-        <meta http-equiv="content-language" content="ja" />
-        <link rel="icon" type="image/png" href="/monitorman-m.png" />
+        <meta httpEquiv="content-language" content="ja" />
+        <link rel="preload" as="image" href="/monitorman-bw.webp" />
+        <link rel="preload" as="image" href="/monitorIcon-bw.webp" />
+        <link rel="icon" type="image/png" href="/monitorman-m.webp" />
+        <link rel="apple-touch-icon" href="/monitorman-m.webp" />
         <meta
           name="keywords"
           content="本郷学園, マイコン部, 本郷中学校, 本郷高等学校"
@@ -50,7 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta property="og:url" content="https://www.hongomcc.net/" />
         <meta
           property="og:image"
-          content="https://www.hongomcc.net/thumbnail.jpg"
+          content="https://www.hongomcc.net/thumbnail.webp"
         />
         <meta property="og:site_name" content="Hongo M.C.C. Website" />
         <meta property="og:locale" content="ja_JP" />

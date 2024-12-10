@@ -26,7 +26,7 @@ export default function MobileFooter() {
     <Box bgColor="#000000" w="100vw" p={4} as="footer">
       <Divider />
       <VStack p={4} h="100%" w="100%">
-        {/* <Image src="logo-w.png" alt="logo" w="50%" p={4} /> */}
+        {/* <Image src="logo-w.webp" alt="logo" w="50%" p={4} /> */}
         <VStack gap={0} maxH="100%">
           <Text textColor="white">本郷学園</Text>
           <Heading textColor="white">マイコン部</Heading>

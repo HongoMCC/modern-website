@@ -20,6 +20,7 @@ export default function MobileGreet(props: GreetProps) {
     <VStack bgColor="#252525" borderRadius="md" p={4} m={2}>
       <Image
         src={props.imageSrc}
+        loading="lazy"
         alt="部長"
         borderRadius="md"
         h="300px"
@@ -60,7 +61,12 @@ export default function MobileGreet(props: GreetProps) {
         <ScrollArea p={4} h="300px">
           {props.children}
         </ScrollArea>
-        <Button colorScheme="primary" onClick={onClose} borderRadius="none">
+        <Button
+          colorScheme="primary"
+          onClick={onClose}
+          borderRadius="none"
+          aria-label="閉じる"
+        >
           とじる
         </Button>
       </Modal>

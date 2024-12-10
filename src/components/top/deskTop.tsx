@@ -55,10 +55,11 @@ export default function DeskTop(props: TopProps) {
         <Marquee speed={10}>
           <HStack gap={0} w={"100%"} h="calc(100vh - 72px)">
             <Image
-              src="monitorman-bw.jpg"
+              src="monitorman-bw.webp"
               alt="background"
               objectFit="cover"
               h={"100%"}
+              rel="preload"
             />
           </HStack>
         </Marquee>
@@ -129,6 +130,7 @@ export default function DeskTop(props: TopProps) {
             href="https://qiita.com/advent-calendar/2024/hongomcc"
             rel="noopener noreferrer"
             target="_blank"
+            aria-label="Qiita Advent Calender"
           >
             Qiita Advent Calender 実施中！詳細はこちら
             <Icon as={MdOpenInNew} />
@@ -158,6 +160,7 @@ export default function DeskTop(props: TopProps) {
                   behavior: "smooth",
                 })
               }
+              aria-label="Scroll"
             />
           </Box>
         </Center>

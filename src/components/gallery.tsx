@@ -126,7 +126,12 @@ export default function Gallery(props: GalleryProps) {
           {props.description}
         </ScrollArea>
 
-        <Button colorScheme="primary" onClick={onClose} borderRadius="none">
+        <Button
+          colorScheme="primary"
+          onClick={onClose}
+          borderRadius="none"
+          aria-label="閉じる"
+        >
           とじる
         </Button>
       </Modal>

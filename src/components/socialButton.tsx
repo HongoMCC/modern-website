@@ -26,6 +26,7 @@ export default function SocialButton(props: SocialButtonProps) {
         _hover={{ bgColor: "gray.700" }}
         onMouseEnter={onOpen}
         onMouseLeave={onClose}
+        aria-label="新しいタブで開く"
       />
     </Indicator>
   );

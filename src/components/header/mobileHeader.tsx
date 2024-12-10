@@ -13,7 +13,7 @@ export default function MobileHeader() {
     <Box pos="sticky" h="72px" as="header" top={0} zIndex={99}>
       <Box bgColor="#121212" p={4}>
         <HStack justifyContent="space-around">
-          <Image src="logo-w.png" alt="logo" h="40px" />
+          <Image src="logo-w.webp" alt="logo" h="40px" />
           <Spacer />
           <SocialButton
             icon={<GithubIcon />}

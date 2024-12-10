@@ -28,7 +28,7 @@ export default function DeskFooter() {
       <Divider />
       <VStack p={4} h="100%" w="100%">
         <HStack w="100%" h="35%">
-          <Image src="logo-w.png" alt="logo" h="80%" p={4} />
+          <Image src="logo-w.webp" alt="logo" h="80%" p={4} />
           <Divider h="100%" orientation="vertical" />
           <VStack gap={0} maxH="100%">
             <Text textColor="white">本郷学園</Text>

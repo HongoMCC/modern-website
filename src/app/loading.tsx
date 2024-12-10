@@ -9,7 +9,7 @@ export default function Loading() {
       justifyContent="center"
       alignItems="center"
     >
-      <Image src="monitorIcon-bw.png" alt="logo" h="100px" m={4} />
+      <Image src="monitorIcon-bw.webp" alt="logo" h="100px" m={4} />
       <YamadaLoading fontSize="4xl" variant="grid" color="gray" />
     </VStack>
   );

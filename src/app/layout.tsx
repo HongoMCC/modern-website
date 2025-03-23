@@ -8,7 +8,7 @@ import customTheme from "../theme";
 import Loading from "./loading";
 
 const NotoFont = Noto_Sans_JP({
-  weight: ["100", "200", "300", "400", "500", "700", "900"],
+  weight: "variable",
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
   display: "swap",
@@ -16,6 +16,33 @@ const NotoFont = Noto_Sans_JP({
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "本郷学園マイコン部",
+  url: "https://www.hongomcc.net/",
+  logo: "https://www.hongomcc.net/logo-b.webp",
+  sameAs: [
+    "https://x.com/HongoMCC",
+    "https://www.youtube.com/@本郷マイコン部公式",
+    "https://github.com/HongoMCC",
+    "https://qiita.com/organizations/HongoMCC",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "JP",
+    addressLocality: "Toshima",
+    addressRegion: "Tokyo",
+    postalCode: "170-0003",
+    streetAddress: "4-11-1 Komagome",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.hongomcc.net/blogs/?s={search_term}",
+    "query-input": "required name=search_term",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -60,6 +87,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HongoMCC" />
         <meta name="twitter:creator" content="@HongoMCC" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${NotoFont.variable}`}>
         <Suspense fallback={<Loading />}>

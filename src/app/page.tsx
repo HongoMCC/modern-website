@@ -110,7 +110,7 @@ export default function Home() {
               <wbr />
               「班」は部員の宣言によって1名以上の班員で設立でき、2つ以上の班に所属することも可能です。
             </Text>
-            <Marquee pauseOnHover>
+            <Marquee pauseOnHover autoFill>
               <HStack ml={5}>
                 <Gallery
                   bgImage="bot.webp"

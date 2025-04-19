@@ -49,7 +49,7 @@ export default function Home() {
     return () => {
       observer.disconnect();
     };
-  }, [scaleFadeRef]);
+  }, [scaleFadeRef, onOpen, onClose]);
 
   return (
     <Box bgColor="#121212" overflowX="hidden" top={0}>

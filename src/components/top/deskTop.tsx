@@ -8,17 +8,14 @@ import {
   HStack,
   IconButton,
   Image,
-  Link as UILink,
-  Spacer,
   Text,
   useDisclosure,
   VStack,
-  Icon,
 } from "@yamada-ui/react";
-import Link from "next/link";
+
 import TypeIt from "typeit-react";
 import { JetBrains_Mono } from "next/font/google";
-import { MdArrowDownward, MdOpenInNew } from "react-icons/md";
+import { MdArrowDownward } from "react-icons/md";
 
 import Marquee from "react-fast-marquee";
 import { TopProps } from "../top";

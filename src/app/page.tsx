@@ -25,14 +25,16 @@ import Greet from "@/components/greet";
 import Loading from "./loading";
 
 export default function Home() {
-  const contentRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(
+    null!
+  ) as React.RefObject<HTMLDivElement>;
   const wordsEn = ["Hongo.", "yourself.", "everything!"];
   const wordsJa = ["本郷", "自分自身", "すべて"];
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const scaleFadeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,9 +52,9 @@ export default function Home() {
   }, [scaleFadeRef]);
 
   return (
-    <Box bgColor="#121212" overflowX="hidden">
+    <Box bgColor="#121212" overflowX="hidden" top={0}>
       {!isLoaded && <Loading />}
-      <Fade isOpen={isLoaded} duration={3}>
+      <Fade open={isLoaded} duration={3}>
         <Header />
         <Top wordsEn={wordsEn} wordsJa={wordsJa} contentRef={contentRef} />
         <Box bgColor="#121212" w="100vw" p={4}>
@@ -71,7 +73,7 @@ export default function Home() {
             <Text textColor="gray.50" fontSize={{ base: "md", md: "sm" }}>
               マイコン部の活動内容は、
             </Text>
-            <ScaleFade isOpen={isOpen} ref={scaleFadeRef} scale={1.8}>
+            <ScaleFade open={open} ref={scaleFadeRef} scale={1.8}>
               <Center w="100%">
                 <Center
                   bgImage="focus.svg"
@@ -116,7 +118,7 @@ export default function Home() {
                   bgImage="bot.webp"
                   avatarSrc="bot.webp"
                   title="ロボット班"
-                  description="ロボットを作ります"
+                  description="近藤科学製二足歩行ロボットキット「KHR」シリーズ（部内通称：KONDO君）を組み立て、制御して、彼が多彩な動きをできるよう手助けします。"
                   heading={
                     <>
                       ロボットを制御して
@@ -130,7 +132,7 @@ export default function Home() {
                   bgImage="pc.webp"
                   avatarSrc="pc.webp"
                   title="パソコン班"
-                  description="吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。"
+                  description="最も班員の多い班です。(最も活動内容がぼやけている班ともいえます)コンピュータ上で行う(ソフトウェアを扱う)活動全般を行います。例えば、プログラミング、Web開発、ゲーム制作、3Dモデリング、動画編集、音楽制作などです。"
                   heading={
                     <>
                       プログラミングで
@@ -142,9 +144,9 @@ export default function Home() {
                 />
                 <Gallery
                   bgImage="craft.webp"
-                  avatarSrc="craft.webp"
+                  avatarSrc="vfd.jpg"
                   title="電子工作班"
-                  description="ラズパイやArduinoを使ってメカを作ります"
+                  description="基板に電子部品をはんだ付けしながら、電子ゲームやスピーカ、時計、ロボットアームなどのオリジナル作品を制作します。Rasberry PiやArduinoなどのマイコンにプログラムを書き込んで部品制御に使用することもあります。"
                   heading={
                     <>
                       男なら
@@ -155,10 +157,11 @@ export default function Home() {
                   subHeading={<>電子工作班の活動</>}
                 />
                 <Gallery
+                  memberNum={2}
                   bgImage="retro.webp"
                   avatarSrc="retro.webp"
                   title="技術遺産研究班"
-                  description="PC-98やFM-TOWNSなどのレトロPCを研究します"
+                  description="情報関連技術の過去を探ることで、新しい技術のありがたみと存在理由を理解する班です。部員が持ち込んだPC-9800シリーズやFM-TOWNSなどを修理して動態保存することを中心に、当時のソフトウェア・マニュアルなどの収集やレトロOSのエミュレートなども行っています。"
                   heading={
                     <>
                       古きを温め
@@ -211,7 +214,7 @@ export default function Home() {
                 <br />
                 また、本郷学園の理念の一つに「自学自習」があります。
                 <br />
-                しかし、マイコン部はそのような胡散臭い文句を基に活動しているわけではありません。
+                しかし、マイコン部はそのような胡散臭い文句を常に意識して活動しているわけではありません。
                 <br />
                 部員たちの活動は全てが純粋な興味だけが動機です。
                 <br />

@@ -1,6 +1,6 @@
 "use client";
 
-import { HStack, Heading, Divider } from "@yamada-ui/react";
+import { HStack, Heading, Separator } from "@yamada-ui/react";
 import type { ArticleTitleProps } from "../articleTitle";
 import { JetBrains_Mono } from "next/font/google";
 const MonoFont = JetBrains_Mono({
@@ -18,7 +18,7 @@ export default function DeskArticleTitle(props: ArticleTitleProps) {
       >
         {padNo}
       </Heading>
-      <Divider h="60px" orientation="vertical" />
+      <Separator h="60px" orientation="vertical" />
       <Heading textColor="white" fontFamily={MonoFont.style.fontFamily} w="20%">
         {props.en}
       </Heading>

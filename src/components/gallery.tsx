@@ -26,7 +26,7 @@ interface GalleryProps {
 }
 
 export default function Gallery(props: GalleryProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const [width] = useWindowSize();
   return (
     <Box
@@ -86,7 +86,7 @@ export default function Gallery(props: GalleryProps) {
           </HStack>
         </Box>
       </VStack>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal open={open} onClose={onClose}>
         <Box>
           <HStack p={4}>
             <Avatar src={props.avatarSrc} />
@@ -122,18 +122,30 @@ export default function Gallery(props: GalleryProps) {
             </Heading>
           </VStack>
         </Box>
-        <ScrollArea p={4} h="300px">
+        <ScrollArea
+          p={4}
+          h="300px"
+          boxShadow="inset 0px -20px 20px -10px rgba(0, 0, 0, 0.7)"
+          onScroll={(e) => {
+            const target = e.target as HTMLElement;
+            const isAtTop = target.scrollTop === 0;
+            const isAtBottom =
+              target.scrollHeight - target.scrollTop === target.clientHeight;
+
+            if (isAtTop) {
+              target.style.boxShadow =
+                "inset 0px -20px 20px -10px rgba(0, 0, 0, 0.7)";
+            } else if (isAtBottom) {
+              target.style.boxShadow =
+                "inset 0px 20px 20px -10px rgba(0, 0, 0, 0.7)";
+            } else {
+              target.style.boxShadow =
+                "inset 0px 20px 20px -10px rgba(0, 0, 0, 0.7), inset 0px -20px 20px -10px rgba(0, 0, 0, 0.7)";
+            }
+          }}
+        >
           {props.description}
         </ScrollArea>
-
-        <Button
-          colorScheme="primary"
-          onClick={onClose}
-          borderRadius="none"
-          aria-label="閉じる"
-        >
-          とじる
-        </Button>
       </Modal>
     </Box>
   );

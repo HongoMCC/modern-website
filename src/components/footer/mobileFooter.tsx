@@ -2,7 +2,7 @@
 
 import {
   Box,
-  Divider,
+  Separator,
   Heading,
   HStack,
   Spacer,
@@ -24,14 +24,14 @@ const MonoFont = JetBrains_Mono({
 export default function MobileFooter() {
   return (
     <Box bgColor="#000000" w="100vw" p={4} as="footer">
-      <Divider />
+      <Separator />
       <VStack p={4} h="100%" w="100%">
         {/* <Image src="logo-w.webp" alt="logo" w="50%" p={4} /> */}
         <VStack gap={0} maxH="100%">
           <Text textColor="white">本郷学園</Text>
           <Heading textColor="white">マイコン部</Heading>
           <Text textColor="white" fontFamily={MonoFont.style.fontFamily}>
-            Hongo MicroComputer Club
+            Hongo Micro Computer Club
           </Text>
         </VStack>
         <HStack w="100%" justifyContent="start">
@@ -107,7 +107,7 @@ export default function MobileFooter() {
           fontFamily={MonoFont.style.fontFamily}
           fontSize="xs"
         >
-          (C) 2024 Hongo M.C.C. All Rights Reserved.
+          (C) 2024-2025 Hongo M.C.C. All Rights Reserved.
         </Text>
       </VStack>
     </Box>

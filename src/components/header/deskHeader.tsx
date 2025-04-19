@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Divider, HStack, Image, Spacer } from "@yamada-ui/react";
+import { Box, Separator, HStack, Image, Spacer } from "@yamada-ui/react";
 import GithubIcon from "../githubIcon";
 import React from "react";
 import XIcon from "../xIcon";
@@ -26,7 +26,7 @@ export default function DeskHeader() {
           <SocialButton icon={<XIcon />} href="https://x.com/HongoMCC" />
         </HStack>
       </Box>
-      <Divider />
+      <Separator />
     </Box>
   );
 }

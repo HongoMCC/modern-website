@@ -136,7 +136,7 @@ export default function MobileTop(props: TopProps) {
             p={2}
             mr={4}
           >
-            <Fade isOpen={isOpen} duration={0.5}>
+            <Fade open={isOpen} duration={0.5}>
               {displayWordJa}
             </Fade>
           </Heading>

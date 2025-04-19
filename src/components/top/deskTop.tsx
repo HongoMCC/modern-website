@@ -42,7 +42,7 @@ export default function DeskTop(props: TopProps) {
       setDisplayWordJa(props.wordsJa[(index + 1) % props.wordsJa.length]);
     }, 300);
   }
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   return (
     <Box bgColor="#121212" height="calc(100vh - 72px)" w="100vw">
       <Box
@@ -117,13 +117,13 @@ export default function DeskTop(props: TopProps) {
             p={2}
             mr={4}
           >
-            <Fade isOpen={isOpen} duration={0.5}>
+            <Fade open={open} duration={0.5}>
               {displayWordJa}
             </Fade>
           </Heading>
           <Heading textColor="white">をハックしよう。</Heading>
         </HStack>
-        <Spacer />
+        {/* <Spacer />
         <Center w="50%" flexGrow={1} h="full">
           <UILink
             as={Link}
@@ -136,9 +136,9 @@ export default function DeskTop(props: TopProps) {
             <Icon as={MdOpenInNew} />
           </UILink>
         </Center>
-        <Spacer />
+        <Spacer /> */}
         <Center ref={props.contentRef} w="50%" flexGrow={1} h="full">
-          <Box>
+          <VStack alignItems={"center"} justifyContent={"center"} gap={0}>
             <Text
               textColor="white"
               fontSize="md"
@@ -147,7 +147,7 @@ export default function DeskTop(props: TopProps) {
               textAlign={"center"}
               w={"100%"}
             >
-              Scroll
+              SCROLL
             </Text>
             <IconButton
               icon={<MdArrowDownward />}
@@ -162,7 +162,7 @@ export default function DeskTop(props: TopProps) {
               }
               aria-label="Scroll"
             />
-          </Box>
+          </VStack>
         </Center>
       </VStack>
     </Box>

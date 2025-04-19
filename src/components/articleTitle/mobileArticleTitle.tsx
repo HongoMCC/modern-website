@@ -1,6 +1,6 @@
 "use client";
 
-import { HStack, Heading, Divider, VStack } from "@yamada-ui/react";
+import { HStack, Heading, Separator, VStack } from "@yamada-ui/react";
 import type { ArticleTitleProps } from "../articleTitle";
 import { JetBrains_Mono } from "next/font/google";
 const MonoFont = JetBrains_Mono({
@@ -18,7 +18,7 @@ export default function MobileArticleTitle(props: ArticleTitleProps) {
       >
         {padNo}
       </Heading>
-      <Divider h="60px" orientation="vertical" />
+      <Separator h="60px" orientation="vertical" />
       <VStack gap={0}>
         <Heading
           textColor="white"
